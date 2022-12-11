@@ -89,3 +89,7 @@ winapi = "0.3.9"
 
 [package.metadata.docs.rs]
 features = ["ssl"]
+
+[patch.crates-io.rustls]
+git = "https://github.com/rustls/rustls"
+branch = "feat-ip-address"

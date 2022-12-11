@@ -454,7 +454,9 @@ impl Docker {
         for cert in rustls_native_certs::load_native_certs()? {
             root_store
                 .add(&rustls::Certificate(cert.0))
-                .map_err(|err| NoNativeCertsError { err })?;
+                .map_err(|err| NoNativeCertsError {
+                    err: err.to_string(),
+                })?;
         }
 
         root_store.add_server_trust_anchors(webpki_roots::TLS_SERVER_ROOTS.0.iter().map(|ta| {
